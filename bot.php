@@ -374,9 +374,11 @@ array (
 	}
 }
  
-$result =  json_encode($balas);
+if (isset($balas)) {
+    $result = json_encode($balas);
 //$result = ob_get_clean();
-file_put_contents('./balasan.json',$result);
-$client->replyMessage($balas);
+    file_put_contents('./balasan.json', $result);
+    $client->replyMessage($balas);
+}
 
 ?>
