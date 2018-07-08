@@ -152,21 +152,18 @@ array (
 						);
 				
 	}
-	if($command=='cuaca')
-	{
-		
-		$result = cuaca($options);
-		$balas = array(
-							'replyToken' => $replyToken,														
-							'messages' => array(
-                array(
-                    'type' => 'text',
-                    'text' => $result
-                )
-							)
-						);
-				
-	}
+	if ($command == '/cuaca') {
+        	$result = cuaca($options);
+        	$balas = array(
+        	    'replyToken' => $replyToken,
+        	    'messages' => array(
+        	        array(
+        	            'type' => 'text',
+        	            'text' => $result
+        	        )
+        	    )
+        	);
+  	}
 	if($pesan_datang=='help')
 	{
 		
