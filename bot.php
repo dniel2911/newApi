@@ -16,14 +16,14 @@ $message 	= $client->parseEvents()[0]['message'];
 $messageid 	= $client->parseEvents()[0]['message']['id'];
 $pesan_datang = strtolower($message['text']);
 $profile = $client->profil($userId);
-$textsplit = explode(" ", $message['text']);
+$msgtext = explode(" ", $message['text']);
 
 $command = $msgtext[0];
 $options = $msgtext[1];
-if (count($pesan_datang) > 2) {
-    for ($i = 2; $i < count($pesan_datang); $i++) {
+if (count($msgtext) > 2) {
+    for ($i = 2; $i < count($msgtext); $i++) {
         $options .= '+';
-        $options .= $pesan_datang[$i];
+        $options .= $msgtext[$i];
     }
 }
 
