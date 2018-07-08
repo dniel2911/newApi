@@ -16,14 +16,14 @@ $message 	= $client->parseEvents()[0]['message'];
 $messageid 	= $client->parseEvents()[0]['message']['id'];
 $pesan_datang = strtolower($message['text']);
 $profile = $client->profil($userId);
-$textsplit = explode("|", strtolower($message['text']));
+$textsplit = explode(" ", $message['text']);
 
-$command = $textsplit[0];
-$options = $textsplit[1];
-if (count($textsplit) > 2) {
-    for ($i = 2; $i < count($textsplit); $i++) {
+$command = $msgtext[0];
+$options = $msgtext[1];
+if (count($pesan_datang) > 2) {
+    for ($i = 2; $i < count($pesan_datang); $i++) {
         $options .= '+';
-        $options .= $textsplit[$i];
+        $options .= $pesan_datang[$i];
     }
 }
 
@@ -33,12 +33,12 @@ function cuaca($keyword) {
     $response = Unirest\Request::get("$uri");
     $json = json_decode($response->raw_body, true);
     $result = "Halo Kak ^_^ Ini ada Ramalan Cuaca Untuk Daerah ";
-    $result .= $json['name'];
-    $result .= " Dan Sekitarnya";
-    $result .= "\n\nCuaca : ";
-    $result .= $json['weather']['0']['main'];
-    $result .= "\nDeskripsi : ";
-    $result .= $json['weather']['0']['description'];
+	$result .= $json['name'];
+	$result .= " Dan Sekitarnya";
+	$result .= "\n\nCuaca : ";
+	$result .= $json['weather']['0']['main'];
+	$result .= "\nDeskripsi : ";
+	$result .= $json['weather']['0']['description'];
     return $result;
 }
 
